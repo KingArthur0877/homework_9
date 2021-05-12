@@ -2,7 +2,6 @@
 const inquirer = require("inquirer");
 const generateMarkdown = require("./utils/generateMarkdown")
 const fs = require("fs");
-const generateMarkdown = require("./utils/generateMarkdown");
 
 // TODO: Create an array of questions for user input
 const questions = [
@@ -39,7 +38,7 @@ const questions = [
         type: "list",
         message: "Please select your licence for this project.",
         name: "licence",
-        choices: ["MIT", "GPL_3.0", "APACHE_2.0, BSD_3", "None"],
+        choices: ["MIT", "GPL_3.0", "APACHE_2.0", "BSD_3", "None"],
     },
     {
         type: "input",
@@ -91,13 +90,13 @@ const writeToFile = (fileName) => {
 
 // TODO: Create a function to initialize app
 const init = async () => {
-    // Start asking the questions
+    // Ask the questions.
     const answers = await inquirer.prompt(questions);
-
-    const generateMarkdown = generateMarkdown(answers);
-
-    writeToFile(generateMarkdown);
-};
-
-// Function call to initialize app
-init();
+  
+    const generatedMarkdown = generateMarkdown(answers);
+  
+    writeToFile(generatedMarkdown);
+  };
+  
+  // Function call to initialize app
+  init();
